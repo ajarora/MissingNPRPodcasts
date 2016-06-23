@@ -43,6 +43,7 @@ class Podcast
         @copyright = "Copyright #{Date.today.year} NPR"
         @author = args[:author] or 'NPR: National Public Radio'
         @language = args[:language] or 'en'
+        @image_url = args[:program_image]
     end
 
     def build_rss
@@ -90,9 +91,7 @@ class Podcast
         channel.description program_property('teaser')
         channel.language @language
         channel.copyright @copyright
-
-        # NEW! Add image and ... podcast metadata
-        channel.itunes :image, :href => 'http://dudesbros.com/custom_npr_logo.png'
+        channel.itunes :image, :href => program_property('program_image') # NEW! Add podcast image
 
         # iTunes-specific metadata
         channel.itunes :subtitle, program_property('miniTeaser')
@@ -130,7 +129,12 @@ class Podcast
         story_json['link'].each { |link_json| short_url = link_json['$text'] if link_json['type'] == 'short' }
 
         # NEW! adding individual images for episodes...although Apple doesn't respect this method :(
-        image_url = story_json['image'][0]['enlargement']['src'] OR 'http://dudesbros.com/custom_npr_logo.png'
+        image_url = 'http://dudesbros.com/custom_npr_logo.png'
+        begin
+            image_url = story_json['image'][0]['enlargement']['src']
+        rescue
+            puts 'No story image.'
+        end
 
         # NEW! This block is no longer necessary when using the mp4 url
         # Go find the actual audio URL (separate web request)
