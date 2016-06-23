@@ -7,7 +7,7 @@ require 'json'
 class SafetyHash < Hash
     def [](y)
         result = super
-        return result.nil? ? '' : result 
+        return result.nil? ? '' : result
     end
 end
 
@@ -91,7 +91,7 @@ class Podcast
         channel.copyright @copyright
 
         # NEW! Add image and ... podcast metadata
-        channel.itunes :image, 'href="http://dudesbros.com/custom_npr_logo.png"/'
+        channel.itunes :image, :href => 'http://dudesbros.com/custom_npr_logo.png'
 
         # iTunes-specific metadata
         channel.itunes :subtitle, program_property('miniTeaser')
