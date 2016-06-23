@@ -113,8 +113,10 @@ class Podcast
             # NEW! m3u_url = story_json['audio'][0]['format']['mp3'][0]['$text']
             # NEW! replacing the above mp3 playlist url with the below mp4 (m4a / AAC) url for better quality and file-size
             audio_url = story_json['audio'][0]['format']['mp4'][0]['$text']
+            # NEW! adding individual images for episodes...so excited!
+            image_url = story_json['image'][0]['enlargement']['src']
         rescue
-            return # Bail if there's no audio
+            return # Bail if there's no audio # NEW! Or image!
         end
 
         # Find appropriate story URL
@@ -136,9 +138,6 @@ class Podcast
         # rescue
         #     return # Bail if there's an error
         # end
-
-        # NEW! adding individual images for episodes...so excited!
-        image_url = story_json['image'][0]['enlargement']['src']
 
         channel.item do |story|
             story.title story_json['title']['$text']
