@@ -128,8 +128,8 @@ class Podcast
         return if story_url.empty?
 
         # NEW! Adding the short URL so we can use it somewhere to make sharing easier
-        short_url = ''
-        story_json['link'].each { |link_json| short_url = link_json['$text'] if link_json['type'] == 'short' }
+        # short_url = ''
+        # story_json['link'].each { |link_json| short_url = link_json['$text'] if link_json['type'] == 'short' }
 
         # NEW! This block is no longer necessary when using the mp4 url
         # Go find the actual audio URL (separate web request)
