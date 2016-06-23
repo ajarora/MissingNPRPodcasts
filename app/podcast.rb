@@ -63,7 +63,7 @@ class Podcast
     def _get_program_json
         request_args = URI.encode_www_form :id => @program_id,
                                            :fields => 'all',
-                                           :requiredAssets => 'image,audio',
+                                           # :requiredAssets => 'image,audio',
                                            :dataType => 'story',
                                            :output => 'JSON',
                                            :numResults => @story_count,
