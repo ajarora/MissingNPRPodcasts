@@ -115,7 +115,7 @@ class Podcast
             # NEW! replacing the above mp3 playlist url with the below mp4 (m4a / AAC) url for better quality and file-size
             audio_url = story_json['audio'][0]['format']['mp4'][0]['$text']
             # NEW! adding individual images for episodes...so excited!
-            image_url = story_json['image'][0]['enlargement']['src']
+            # image_url = story_json['image'][0]['enlargement']['src']
         rescue
             return # Bail if there's no audio # NEW! Or image!
         end
@@ -153,7 +153,7 @@ class Podcast
 
             #NEW!
             story.enclosure :url => audio_url, :type => 'audio/m4a' # changed from mp3 to m4a (aka mp4 aka HE-AAC)
-            story.itunes :image => image_url
+            # story.itunes :image => image_url
 
             # Construct author list before writing it (if there are authors)
             if story_json.has_key? 'byline'
