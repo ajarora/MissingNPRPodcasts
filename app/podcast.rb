@@ -114,10 +114,8 @@ class Podcast
             # NEW! m3u_url = story_json['audio'][0]['format']['mp3'][0]['$text']
             # NEW! replacing the above mp3 playlist url with the below mp4 (m4a / AAC) url for better quality and file-size
             audio_url = story_json['audio'][0]['format']['mp4']['$text']
-            # NEW! adding individual images for episodes...so excited!
-            image_url = story_json['image'][0]['enlargement']['src']
         rescue
-            return # Bail if there's no audio # NEW! Or image!
+            return # Bail if there's no audio
         end
 
         # Find appropriate story URL
@@ -130,6 +128,9 @@ class Podcast
         # NEW! Adding the short URL so we can use it somewhere to make sharing easier
         short_url = ''
         story_json['link'].each { |link_json| short_url = link_json['$text'] if link_json['type'] == 'short' }
+
+        # NEW! adding individual images for episodes...although Apple doesn't respect this method :(
+        image_url = story_json['image'][0]['enlargement']['src'] OR 'http://dudesbros.com/custom_npr_logo.png'
 
         # NEW! This block is no longer necessary when using the mp4 url
         # Go find the actual audio URL (separate web request)
