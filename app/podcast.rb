@@ -113,7 +113,7 @@ class Podcast
         begin
             # NEW! m3u_url = story_json['audio'][0]['format']['mp3'][0]['$text']
             # NEW! replacing the above mp3 playlist url with the below mp4 (m4a / AAC) url for better quality and file-size
-            audio_url = story_json['audio'][0]['format']['mp4'][0]['$text']
+            audio_url = story_json['audio'][0]['format']['mp4']['$text']
             # NEW! adding individual images for episodes...so excited!
             # image_url = story_json['image'][0]['enlargement']['src']
         rescue
