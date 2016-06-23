@@ -43,7 +43,7 @@ end
 get '/podcasts/weekendsaturday' do
     podcast = Podcast.new :program_id => 7,
                           :api_key => params[:key],
-                          :story_count => STORY_COUNT
+                          :story_count => STORY_COUNT,
                           :program_image => 'http://dudesbros.com/custom_atc_logo.png'
 
     content_type 'text/xml'
@@ -53,7 +53,7 @@ end
 get '/podcasts/weekendsunday' do
     podcast = Podcast.new :program_id => 10,
                           :api_key => params[:key],
-                          :story_count => STORY_COUNT
+                          :story_count => STORY_COUNT,
                           :program_image => 'http://dudesbros.com/custom_atc_logo.png'
 
     content_type 'text/xml'
@@ -63,7 +63,7 @@ end
 get '/podcasts/morningedition' do
     podcast = Podcast.new :program_id => 3,
                           :api_key => params[:key],
-                          :story_count => STORY_COUNT
+                          :story_count => STORY_COUNT,
                           :program_image => 'http://dudesbros.com/custom_atc_logo.png'
 
     content_type 'text/xml'
@@ -73,7 +73,7 @@ end
 get '/podcasts/allthingsconsidered' do
     podcast = Podcast.new :program_id => 2,
                           :api_key => params[:key],
-                          :story_count => STORY_COUNT
+                          :story_count => STORY_COUNT,
                           :program_image => 'http://dudesbros.com/custom_atc_logo.png'
 
     content_type 'text/xml'
