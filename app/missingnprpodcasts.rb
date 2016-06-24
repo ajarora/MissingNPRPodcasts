@@ -64,7 +64,7 @@ get '/podcasts/morningedition' do
     podcast = Podcast.new :program_id => 3,
                           :api_key => params[:key],
                           :story_count => STORY_COUNT,
-                          :program_image => 'http://dudesbros.com/custom_atc_logo.png'
+                          :program_image => 'http://dudesbros.com/custom_morningedition_logo.jpg'
 
     content_type 'text/xml'
     podcast.build_rss
