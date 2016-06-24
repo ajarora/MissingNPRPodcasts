@@ -91,7 +91,7 @@ class Podcast
         channel.description program_property('teaser')
         channel.language @language
         channel.copyright @copyright
-        channel.itunes :image, :href => program_property('program_image') # NEW! Add podcast image
+        channel.itunes :image, :href => @image_url # NEW! Add podcast image
 
         # iTunes-specific metadata
         channel.itunes :subtitle, program_property('miniTeaser')
